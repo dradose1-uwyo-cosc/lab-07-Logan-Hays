@@ -1,8 +1,8 @@
-# Your Name Here
+# Logan Hays
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
+# Submission Date: 10/31/24
+# Lab 07
+# Lab Section: 13
 # Sources, people worked with, help given to: 
 # your
 # comments
@@ -18,8 +18,18 @@
 # You will continue to prompt the user until a proper integer value is entered
 
 factorial = 1
+while True:
+    biggest_number = input("What is a positive number that you want the factorial of?")
+    if biggest_number.isdigit():
+        biggest_number = int(biggest_number)
+        while biggest_number > 0:
+            factorial *= biggest_number
+            biggest_number -= 1
+        print(f"The result of the factorial based on the given bound is {factorial}")
+        break
+    else:
+        print("Number was not positive or contained letters. Try again")
 
-print(f"The result of the factorial based on the given bound is {factorial}")
 
 print("*"*75)
 # Create a while loop that prompts a user for input of an integer values
@@ -38,6 +48,20 @@ print("*"*75)
 # The sum should start at 0 
 
 num_sum = 0 
+while True:
+    number = input("what number would you like to add or type EXIT to stop")
+    if number.upper() == "EXIT":
+        break
+    else:
+        if number.isdigit():
+            num_sum += int(number)
+            
+        elif number.lstrip("-").isdigit():
+            number = number.lstrip("-")
+            num_sum -= int(number)
+            
+        else:
+            print("please enter a number")
 
 print(f"Your final sum is {num_sum}")
 
@@ -59,4 +83,45 @@ print("*"*75)
 # Print the result of the equation
 # Again, loop through prompting the user for input until `exit` in any casing is input 
 
-        
+
+while True:
+    numbers = input("Enter the numbers and opperation that you wish for and type EXIT to end")
+    if numbers.upper() == "EXIT":
+        break
+    if "+" in numbers:
+        operands = numbers.split("+")
+        operator = "+"
+    elif "-" in numbers:
+        operands = numbers.split("-")
+        operator = "-"
+    elif "*" in numbers:
+        operands = numbers.split("*")
+        operator = "*"
+    elif "/" in numbers:
+        operands = numbers.split("/")
+        operator = "/"
+    elif "%" in numbers:
+        operands = numbers.split("%")
+        operator = "%"
+    else:
+        print("input numbers with a valid opperation like +,_,*,/,%")
+        continue 
+    operand1, operand2, = operands[0].strip(), operands[1].strip()
+    if operand1.isdigit() and operand2.isdigit():
+        operand1, operand2, = int(operand1), int(operand2)
+        result = 0
+        if operator == "+":
+            result = operand1 + operand2
+        elif operator == "-":
+            result = operand1 - operand2
+        elif operator == "*":
+            result = operand1 * operand2
+        elif operator == "/":
+            result = operand1 / operand2
+        elif operator == "%":
+            result = operand1 % operand2
+        print(f"The result is {result}")
+    else:
+        print("only enter values that are positive")
+
+    
